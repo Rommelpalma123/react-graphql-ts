@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: alanzc1/banco-server:1.0.0 # Cambia esto a la imagen correcta
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGO_URI
+              value: 'mongodb+srv://plataforma:plataforma123@cluster0.r4anbav.mongodb.net/'
+            - name: PORT
+              value: '5000'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer # O utiliza "ClusterIP" si no necesitas acceso desde fuera del clúster

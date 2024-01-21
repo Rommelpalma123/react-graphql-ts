@@ -1,0 +1,6 @@
+export * from './register.controller'
+export * from './account.controller'
+export * from './procedure.controller'
+export * from './country.controller'
+export * from './client.controller'
+export * from './city.controller'

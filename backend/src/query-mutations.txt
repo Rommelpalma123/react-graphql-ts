@@ -1,0 +1,24 @@
+// crear pais 
+
+mutation createCountry($createCountry: CreateCountryInput!){
+  createCountry(createCountry: $createCountry){
+    nombre
+  }
+}
+
+{
+  "createCountry": {
+    "nombre": "Chile"
+  }
+}
+
+
+
+
+
+/* eliminar ciudad */
+mutation{
+  deleleCity(id: "6567c60f7c3c21084b4c0666"){
+    id_pais
+  }
+}
